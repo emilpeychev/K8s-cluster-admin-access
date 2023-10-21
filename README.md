@@ -20,8 +20,8 @@ Prerequisites:
 2. Create a CertificateSigningRequest.
 
 ```sh
-openssl genrsa -out home-admin-admin.key 2048 # Generates ssl key
-openssl req -new -key home-admin-admin.key -out home-admin-admin.csr -subj "/CN=home-admin-admin" # Generates a Create a CertificateSigningRequest/ CSR
+openssl genrsa -out home-admin.key 2048 # Generates ssl key
+openssl req -new -key home-admin.key -out home-admin.csr -subj "/CN=home-admin" # Generates a Create a CertificateSigningRequest/ CSR
 ```
 
 3. In the directory `client_certificates` pass the command.
@@ -34,8 +34,8 @@ output
 There are two files:
 
 ```xml
-├── home-admin-admin.crt
-├── home-admin-admin.csr
+├── home-admin.crt
+├── home-admin.csr
 ```
 
 ![Screenshot 1!](/Screenshots/Screenshots-1.png)
@@ -46,10 +46,10 @@ There are two files:
 
 ![Screenshot 2!](/Screenshots/Screenshots-2.png)
 
-2. Replace `request: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURSBSRVF` with your on which you need to generate from the `home-admin-admin.csr`.
+2. Replace `request: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURSBSRVF` with your on which you need to generate from the `home-admin.csr`.
 
 ```sh
-cat | base64 home-admin.csr | tr -d "\n" #to generate "request: key in base64 fromat.
+cat | base64 home-admin.csr | tr -d "\n" #to generate "request: key in base64 format.
 ```
 
 ![Screenshot 3!](/Screenshots/Screenshots-3.png)
@@ -66,7 +66,7 @@ kubectl get csr # the status of the certificate should be pending
 kubectl certificate approve home-admin # now check again and the status should bee approved
 ```
 
-5. Extract the certificate for `home-admin in text fromat decoded from base64`.
+5. Extract the certificate for `home-admin in text format decoded from base64`.
 
 ```sh
 kubectl get csr home-admin -o jsonpath='{.status.certificate}'| base64 -d > home-admin.crt
@@ -107,8 +107,8 @@ kubectl get csr home-admin -o jsonpath='{.status.certificate}'| base64 -d > home
 8. Encode
 
 ```xml
-├── home-admin.crt in fromat base64
-├── home-admin.csr in fromat base64
+├── home-admin.crt in format base64
+├── home-admin.csr in format base64
 ```
 
 Replace `client-certificate-data`and `client-key-data` with the newly generated ones.
@@ -130,8 +130,8 @@ Replace `client-certificate-data`and `client-key-data` with the newly generated 
 ├── crole-crbinding.yaml
 ├── csr-script.sh
 ├── home-admin.crt
-├── admin-home.csr
-└── admin-home.key
+├── home-admin.csr
+└── home-admin.key
 ```
 
 2. Paste the content:
