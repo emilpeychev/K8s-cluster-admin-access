@@ -82,7 +82,7 @@ kubectl get csr home-admin -o jsonpath='{.status.certificate}'| base64 -d > home
 
 #### Create the home-admin certificate
 
-1. Copy the existing certificate in `.kube/conf` to a separate location.
+1. Copy the existing certificate in `.kube/conf` to a separate location and rename to `k8s-local.conf`.
 2. Open with a text editor and modify as follows.
 3. You will see three certificates:
 
@@ -167,10 +167,15 @@ kubectl get clusterrole
 kubectl get clusterrolebinding
 ```
 
-4. Move the new config file to your laptop `~/.kube/`.
+4. Move the new config file to your laptop `~/.kube/k8s-local.conf`.
+5. In laptop `~/.bashrc` paste on the bottom `export KUBECONFIG=~/.kube/k8s-local.conf`
+
+```sh
+source ~/.bashrc
+```
 
 - Make sure you have [kubectl installed](https://kubernetes.io/docs/tasks/tools/) and run from your laptop.
 
  ```sh
- kubectl get pods
+ kubectl get pods -A
  ```
