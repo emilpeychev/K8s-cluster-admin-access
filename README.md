@@ -31,7 +31,7 @@ tree
 ```
 
 output
-There are two files:
+two files:
 
 ```xml
 ├── home-admin.crt
