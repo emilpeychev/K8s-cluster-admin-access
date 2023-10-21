@@ -10,7 +10,7 @@ There are three main categories of accesses in a k8s cluster:
 
 - Admin access (full access for administrators)
 - User access (limited access for other cluster users, usually limited to name space(s))
-- Service account access (access allowing applications `Jenkins` to perform actions on the cluster)
+- Service account access (access allowing applications `Jenkins` to perfrom actions on the cluster)
 
 ### Admin access
 
@@ -49,7 +49,7 @@ There are two files:
 2. Replace `request: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURSBSRVF` with your on which you need to generate from the `home-admin-admin.csr`.
 
 ```sh
-cat | base64 home-admin.csr | tr -d "\n" #to generate "request: key in base64 format.
+cat | base64 home-admin.csr | tr -d "\n" #to generate "request: key in base64 fromat.
 ```
 
 ![Screenshot 3!](/Screenshots/Screenshots-3.png)
@@ -66,7 +66,7 @@ kubectl get csr # the status of the certificate should be pending
 kubectl certificate approve home-admin # now check again and the status should bee approved
 ```
 
-5. Extract the certificate for `home-admin in text format decoded from base64`.
+5. Extract the certificate for `home-admin in text fromat decoded from base64`.
 
 ```sh
 kubectl get csr home-admin -o jsonpath='{.status.certificate}'| base64 -d > home-admin.crt
@@ -107,8 +107,8 @@ kubectl get csr home-admin -o jsonpath='{.status.certificate}'| base64 -d > home
 8. Encode
 
 ```xml
-├── home-admin.crt in format base64
-├── home-admin.csr in format base64
+├── home-admin.crt in fromat base64
+├── home-admin.csr in fromat base64
 ```
 
 Replace `client-certificate-data`and `client-key-data` with the newly generated ones.
@@ -171,7 +171,7 @@ kubectl get clusterrolebinding
 
 4. Move the new config file to your laptop `~/.kube/`.
 
-- Make sure you have [kubectl installed](https://kubernetes.io/docs/tasks/tools/) and run form your laptop.
+- Make sure you have [kubectl installed](https://kubernetes.io/docs/tasks/tools/) and run from your laptop.
 
  ```sh
  kubectl get pods
