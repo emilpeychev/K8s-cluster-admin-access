@@ -38,8 +38,6 @@ There are two files:
 ├── home-admin.csr
 ```
 
-![Screenshot 1!](/Screenshots/Screenshots-1.png)
-
 #### Place your request with k8s and verify
 
 1. Create a script `csr-script.sh` and got to kubernetes [CSR instructions](https://kubernetes.io/docs/reference/access-authn-authz/certificate-signing-requests/) and paste the CSR manifest in the script.
