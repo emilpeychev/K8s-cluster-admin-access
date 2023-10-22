@@ -10,7 +10,7 @@ There are three main categories of accesses in a k8s cluster:
 
 - Admin access (full access for administrators)
 - User access (limited access for other cluster users, usually limited to name space(s))
-- Service account access (access allowing applications `Jenkins` to perfrom actions on the cluster)
+- Service account access (access allowing applications `Jenkins` to perform actions on the cluster)
 
 ### Admin access
 
@@ -22,7 +22,11 @@ Prerequisites:
 ```sh
 openssl genrsa -out home-admin.key 2048 # Generates ssl key
 openssl req -new -key home-admin.key -out home-admin.csr -subj "/CN=home-admin" # Generates a Create a CertificateSigningRequest/ CSR
+# or
+openssl req -new -key home-admin.key -out home-admin.csr -subj "/CN=home-admin/O=system:admin" # Generates a CertificateSigningRequest (CSR)
 ```
+
+- The additional part, `/O=system:admin`, is an `Organization field` that is commonly used to indicate that the `certificate` is for an `admin-level user`. `system:admin` is a `special value` used in Kubernetes to denote administrative access.
 
 3. In the directory `client_certificates` pass the command.
 
@@ -167,8 +171,11 @@ kubectl get clusterrole
 kubectl get clusterrolebinding
 ```
 
-4. Move the new config file to your laptop `~/.kube/k8s-local.conf`.
+4. Move the new `k8s-local.conf` file to your laptop `~/.kube/k8s-local.conf`.
 5. In laptop `~/.bashrc` paste on the bottom `export KUBECONFIG=~/.kube/k8s-local.conf`
+
+- Setting the `KUBECONFIG` environment variable is crucial for `kubectl` to know how to connect to the right Kubernetes cluster, user, and context. It allows you to easily switch between different Kubernetes configurations, making access management more flexible and efficient.
+- For multiple cluster access [see documentation](https://kubernetes.io/docs/reference/kubectl/cheatsheet/).
 
 ```sh
 source ~/.bashrc
