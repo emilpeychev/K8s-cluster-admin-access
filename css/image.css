@@ -1,8 +1,7 @@
 /* styles.css */
 img {
-    max-width: 50%; /* Ensure images don't exceed their container width */
-    border-radius: 5px;
+    max-width: 70%; /* Ensure images don't exceed their container width */
     height: auto;    /* Maintain aspect ratio */
-    border-radius: 10px;
+    border-radius: 8px;
     /* Add any other styles you want for your images */
     }
