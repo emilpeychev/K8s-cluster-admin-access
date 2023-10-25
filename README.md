@@ -1,6 +1,6 @@
 # K8s Cluster Admin Access
 
- <link rel="stylesheet" type="text/css" href="css/image">
+ <link rel="stylesheet" type="text/css" href="css/image.css">
 
 Give yourself full `k8s Cluster Access` with full `Admin rights` from your laptop.
 
