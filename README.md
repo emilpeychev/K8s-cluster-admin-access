@@ -12,7 +12,12 @@ There are three main categories of accesses in a k8s cluster:
 - User access (limited access for other cluster users, usually limited to name space(s))
 - Service account access (access allowing applications `Jenkins` to perform actions on the cluster)
 
+### Auto create with script
+
+`Before you start` you should know that there is `a fully automated interractive script` that will create the `admin user` for you. If you want to do that read the `README.md` in the `admin-setup directory`.
+
 ### Admin access
+
 
 Prerequisites:
 
